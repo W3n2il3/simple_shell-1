@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 UNIX command line interpreter the code should Display a prompt and wait for the user to type a command
 Handle command lines with argumentson the simple shell 
 the handle command the path and fork must not be called if the command doesn’t exis
@@ -11,3 +12,6 @@ changed the current directory using cd
 Handle the commands separator
 Handle the && and || shell logical operators
 Implement the alias builtin command
+=======
+simple shell
+>>>>>>> d3e8f862ad84048be8d665111b2fff101e9544d6
