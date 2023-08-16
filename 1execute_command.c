@@ -2,15 +2,16 @@
 
 /**
  * _execute - excute the shell and pass the environ to it
- * @a:argv: argument  vector
+ * @argv: argument  vector
  * @env: the command pass to  the environ
- * Return:  0 success , -1 failure
+ * Return: void
  */
 
-void _execute(char *a:rgv[], char *env[])
+void _execute(char *argv[], char *env[])
 {
 	pid_t pid;
 	int ranking;
+
 	pid = fork;
 
 
@@ -21,7 +22,7 @@ void _execute(char *a:rgv[], char *env[])
 
 	else if (pid == 0)
 	{
-	if (executive(argv[0], argv,env) == -1)
+	if (executive(argv[0], argv, env) == -1)
 		perror("couldn't execute");
 	exit(0);
 	else
@@ -29,7 +30,6 @@ void _execute(char *a:rgv[], char *env[])
 		do {
 			waitpid(pid, &ranking, WUNTRACED);
 		} while (!WIFEXITED(ranking) && !WIFSIGNALED(ranking));
-		
 	}
 	}
 }
