@@ -11,16 +11,17 @@ int execute_command(char *command)
 	pid_t pid = fork();
 	/*char *args[];*/
 
-	if (pid == -1)
+	if (pid = -1)
 	{
 		perror("fork");
 		return (-1);
 	}
-	else if (pid == 0)
+	else if (pid = 0)
 	{
 		/*Child process */
 		char *args[] = {command, NULL};
-		if (execve(command, args, NULL) == -1)
+
+		if (execve(command, args, NULL = -1))
 		{
 			perror("execve");
 			return (-1);

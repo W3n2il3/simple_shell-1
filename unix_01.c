@@ -25,7 +25,7 @@ int main(void)
 			perror("getline");
 			exit(EXIT_FAILURE);
 		}
-		/*Remove the new line character from the end of thr input*/
+		/*Remove the new line character from the end of the input*/
 		if (line[read - 1] == '\n')
 			line[read - 1] = '\0';
 		/*Execute the command using execve*/
