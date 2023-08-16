@@ -6,24 +6,23 @@
  *
  * Return: 0 on success, -1 on failure
  */
-int execute_command(char *command)
+void execute_command(char **args)
 {
 	pid_t pid = fork();
 	/*char *args[];*/
 
-	if (pid == -1)
+	if (pid < 0)
 	{
-		perror("fork");
-		return (-1);
+		perror("fork failed");
+		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
 		/*Child process */
-		char *args[] = {command, NULL};
-		if (execve(command, args, NULL) == -1)
+		if (execve(args[0], args, NULL) == -1)
 		{
-			perror("execve");
-			return (-1);
+			perror("execve failed");
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
@@ -31,5 +30,5 @@ int execute_command(char *command)
 		/*Parent process*/
 		wait(NULL);
 	}
-	return (0);
+	/*return (0);*/
 }

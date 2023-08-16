@@ -7,33 +7,28 @@
  */
 int main(void)
 {
-	char *line = NULL;
-	size_t len = 0;
-	size_t read;
+	char *command;
+	char *args[MAX_ARGS];
+	char input[MAX_COMMAND_LENGTH];
+	int i;
 
 	while (1)
 	{
 		printf("($) ");
-		read = getline(&line, &len, stdin);
-		if (read == (ssize_t)-1)
+		fflush(stdout);
+		if (fgets(input, sizeof(input), stdin) == NULL)
 		{
-			if (feof(stdin))
-			{
-				putchar('\n');
-				break;
-			}
-			perror("getline");
-			exit(EXIT_FAILURE);
+			break;
 		}
-		/*Remove the new line character from the end of thr input*/
-		if (line[read - 1] == '\n')
-			line[read - 1] = '\0';
-		/*Execute the command using execve*/
-		if (execute_command(line) == -1)
+		command = strtok(input, "\n");
+		i = 0;
+		while (command != NULL)
 		{
-			perror("execute_command");
+			args[i++]  = command;
+			command = strtok(NULL, "\n");
 		}
+		args[i] = NULL;
+		execute_command(args);
 	}
-	free(line);
 	return (0);
 }
