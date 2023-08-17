@@ -7,5 +7,5 @@
 #include <sys/wait.h>
 
 /*__FUNCTION_PROTOTYPES*/
-int execute_command(char *command);
+void exeute_command(char **args);
 #endif /*SIMPLE_SHELL_H*/
