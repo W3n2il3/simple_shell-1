@@ -2,7 +2,7 @@
 
 /**
  * execute_command - Execute a command using execive
- * @command: The command to execute
+ * @args: pointer to a pointer to execute command
  *
  * Return: 0 on success, -1 on failure
  */
