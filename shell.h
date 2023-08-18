@@ -8,4 +8,7 @@
 
 /*__FUNCTION_PROTOTYPES*/
 void exeute_command(char **args);
+void (*check_for_builtins(char *argv[], char *env[]))(char *env[]);
+void _env(char *env[]);
+void _exit(char *env[])
 #endif /*SIMPLE_SHELL_H*/
