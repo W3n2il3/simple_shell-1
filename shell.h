@@ -12,4 +12,5 @@
 /*__FUNCTION_PROTOTYPES*/
 void execute_command(char **args);
 char *read_command(void);
+int main(int argc, char *argv[]);
 #endif /*SIMPLE_SHELL_H*/
