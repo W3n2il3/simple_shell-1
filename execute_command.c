@@ -1,34 +1,37 @@
 #include "shell.h"
 
 /**
- * execute_command - Execute a command using execive
- * @args: pointer to a pointer to execute command
+ * execute_command - Executes the command given.
+ * @args: An array of pointers to the command and its arguments.
  *
- * Return: 0 on success, -1 on failure
+ * Return: 1 on success, 0 on failure.
  */
-void execute_command(char **args)
+int execute_command(char **args)
 {
-	pid_t pid = fork();
-	/*char *args[];*/
+	pid_t pid;
+	pid_t wpid;
+	int status;
 
-	if (pid < 0)
+	(void)wpid;
+
+	pid = fork();
+	if (pid == 0)
 	{
-		perror("fork failed");
-		exit(EXIT_FAILURE);
-	}
-	else if (pid == 0)
-	{
-		/*Child process */
 		if (execve(args[0], args, NULL) == -1)
 		{
-			perror("execve failed");
-			exit(EXIT_FAILURE);
+			perror("execute_command");
 		}
+		exit(EXIT_FAILURE);
+	}
+	else if (pid < 0)
+	{
+		perror("execute_command");
 	}
 	else
 	{
-		/*Parent process*/
-		wait(NULL);
+		do {
+			wpid = waitpid(pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	/*return (0);*/
+	return (1);
 }

@@ -10,10 +10,16 @@
 #include <string.h>
 
 /*__FUNCTION_PROTOTYPES*/
-void execute_command(char **args);
+void show_prompt(void);
 char *read_command(void);
+<<<<<<< HEAD
 int main(int argc, char *argv[]);
 void n_exit(char *env[]);
 void (*check_for_builtins(char *argv[], char *env[]))(char *env[]);
 void _env(char *env[]);
+=======
+char **parse_command(char *command);
+int execute_command(char **args);
+void free_memory(char **args);
+>>>>>>> b881ffa86a5d007ca4b80ff7bdc78f478ace2c2a
 #endif /*SIMPLE_SHELL_H*/

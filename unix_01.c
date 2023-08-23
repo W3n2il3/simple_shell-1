@@ -1,34 +1,33 @@
 #include "shell.h"
 
 /**
- * main - Entry point for the simple shell program
+ * main - the main loop for our shell project.
  *
- * Return: Always 0.
+ * Return: EXIT_SUCCESS on success
  */
 int main(void)
 {
 	char *command;
-	char *args[MAX_ARGS];
-	char input[MAX_COMMAND_LENGTH];
-	int i;
+	char **args;
+	int status = 1;
 
-	while (1)
+	while (status)
 	{
-		printf("($) ");
-		fflush(stdout);
-		if (fgets(input, sizeof(input), stdin) == NULL)
-		{
-			break;
-		}
-		command = strtok(input, "\n");
-		i = 0;
-		while (command != NULL)
-		{
-			args[i++]  = command;
-			command = strtok(NULL, "\n");
-		}
-		args[i] = NULL;
-		execute_command(args);
+		show_prompt();
+		command = read_command();
+		/**
+		 * if (strcmp(command, "") == 0)
+		*{
+		*	free(command);
+		*	break;
+		*}
+		*/
+		args = parse_command(command);
+		status = execute_command(args);
+
+		free(command);
+		/*free_memory(args);*/
 	}
-	return (0);
+
+	return (EXIT_SUCCESS);
 }
