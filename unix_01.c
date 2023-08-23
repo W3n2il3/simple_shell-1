@@ -26,7 +26,7 @@ int main(void)
 		status = execute_command(args);
 
 		free(command);
-		/*free_memory(args);*/
+		free_memory(args);
 	}
 
 	return (EXIT_SUCCESS);
