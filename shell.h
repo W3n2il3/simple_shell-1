@@ -13,4 +13,7 @@
 void execute_command(char **args);
 char *read_command(void);
 int main(int argc, char *argv[]);
+void n_exit(char *env[]);
+void (*check_for_builtins(char *argv[], char *env[]))(char *env[]);
+void _env(char *env[]);
 #endif /*SIMPLE_SHELL_H*/
