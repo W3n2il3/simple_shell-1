@@ -10,6 +10,9 @@
 #include <string.h>
 
 /*__FUNCTION_PROTOTYPES*/
-void execute_command(char **args);
+void show_prompt(void);
 char *read_command(void);
+char **parse_command(char *command);
+int execute_command(char **args);
+void free_memory(char **args);
 #endif /*SIMPLE_SHELL_H*/
