@@ -13,7 +13,7 @@ int main(void)
 
 	while (status)
 	{
-		show_prompt();
+		/*show_prompt();*/
 		command = read_command();
 		/**
 		 * if (strcmp(command, "") == 0)
